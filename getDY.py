@@ -40,6 +40,7 @@ def get_video_info(video_id):
     # 获得视频的信息
     resp = requests.get(video_info_url, headers=header)
     video_info_json = resp.json()
+    print(video_info_json)
     resp.close()
  
     # 获取作者名字
@@ -64,7 +65,8 @@ def download(title, video_true_url):
     """
     # 创建存放位置
     #当前目录的上一层/dy_video
-    path = '../dy_video'
+    # path = '../dy_video'
+    path = './dy_video'
     if os.path.exists(path):
         pass
     else:
@@ -75,7 +77,8 @@ def download(title, video_true_url):
     content = resp.content
     resp.close()
     # 下载视频
-    with open(f'../dy_video/{title}.mp4', 'wb') as f:
+    # with open(f'../dy_video/{title}.mp4', 'wb') as f:
+    with open(f'./dy_video/{title}.mp4', 'wb') as f:
         f.write(content)
  
     print("视频下载完成！")
